@@ -201,7 +201,7 @@ a:hover { text-decoration-color: var(--jade); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 .project h3 {
   font-family: 'Instrument Serif', serif;
@@ -210,7 +210,7 @@ a:hover { text-decoration-color: var(--jade); }
   letter-spacing: -0.01em;
   line-height: 1.15;
   color: var(--jade-ink);
-  margin-bottom: 14px;
+  margin-bottom: 6px;
 }
 .project-desc {
   font-size: 15.5px;
@@ -381,39 +381,34 @@ a:hover { text-decoration-color: var(--jade); }
 
 /* ── Credentials ─────────────────────────────────────── */
 
-.credentials .section-head { margin-bottom: 24px; }
+.credentials .section-head { margin-bottom: 20px; }
 .cert-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
 }
 .cert {
   display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 14px 18px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 999px;
   background: var(--paper-warm);
-  min-width: 220px;
 }
 .cert-issuer {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  display: none;
 }
 .cert-name {
-  font-family: 'Instrument Serif', serif;
-  font-size: 17px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   color: var(--jade-ink);
-  line-height: 1.2;
 }
 .cert-date {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--muted);
 }
 
@@ -450,6 +445,49 @@ a:hover { text-decoration-color: var(--jade); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+/* ── Tool stack ──────────────────────────────────────── */
+
+.tool-stack {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 22px;
+  line-height: 1.8;
+}
+
+/* ── Status open ─────────────────────────────────────── */
+
+.status-open {
+  color: var(--jade-ink);
+  font-weight: 600;
+}
+
+/* ── Section subtitle ────────────────────────────────── */
+
+.section-subtitle {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted-strong);
+  margin-top: 8px;
+  max-width: 48ch;
+  line-height: 1.4;
+}
+
+/* ── Case study pending ──────────────────────────────── */
+
+.case-study-pending {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 0;
 }
 
 /* ── Responsive ──────────────────────────────────────── */
