@@ -1,519 +1,366 @@
+/* ============================================================
+   FIELD NOTES — design system v2 (2 Jul 2026)
+   A scientist's production log. Replaces the jade/cream system
+   (previous system preserved in git history).
+   Paper white + cold ink + one ochre accent, faint quad grid.
+   Newsreader (display serif) · Public Sans (text) · IBM Plex Mono (data)
+   ============================================================ */
+
 :root {
-  --jade: #373C2B;
-  --jade-deep: #262a1e;
-  --jade-ink: #1a1d14;
-  --jasper: #DAFF00;
-  --jasper-dim: #b8d600;
-  --paper: #F5F2EA;
-  --paper-warm: #EDE8DA;
-  --line: rgba(55, 60, 43, 0.18);
-  --line-soft: rgba(55, 60, 43, 0.08);
-  --muted: rgba(55, 60, 43, 0.62);
-  --muted-strong: rgba(55, 60, 43, 0.80);
-  --amber: #d4892b;
+  --paper: #F9FBFC;          /* cool blue-white, no beige cast */
+  --ink: #1C2B3A;            /* blue-black pen ink */
+  --ink-soft: rgba(28, 43, 58, 0.64);
+  --ink-faint: rgba(28, 43, 58, 0.40);
+  --ochre: #0E7C66;          /* viridian — cold lab green (var names kept for stability) */
+  --ochre-deep: #095A4A;
+  --rule: rgba(28, 43, 58, 0.24);
+  --rule-soft: rgba(28, 43, 58, 0.10);
+  --grid: rgba(43, 76, 126, 0.07);   /* blue quad-paper grid */
+  --card: #FFFFFF;
+  --blue: #0B6EFF;           /* bright terminal blue — labels, stack, & */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  background: var(--paper);
-  color: var(--jade);
-  font-family: 'Inter Tight', system-ui, sans-serif;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  font-feature-settings: "ss01", "cv11";
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background-image: radial-gradient(ellipse 900px 460px at 8% 0%, rgba(218, 255, 0, 0.06), transparent 60%);
-  min-height: 100vh;
-  padding: clamp(20px, 4vw, 56px);
-  overflow-x: hidden;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
 .wrap {
-  max-width: 1080px;
+  max-width: 880px;
   margin: 0 auto;
+  padding: 56px 28px 72px;
 }
 
-a {
-  color: var(--jade-ink);
-  text-decoration: underline;
-  text-decoration-color: var(--line);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 0.15s ease;
-}
-a:hover { text-decoration-color: var(--jade); }
+a { color: var(--ink); text-decoration-color: var(--ochre); text-underline-offset: 3px; }
+a:hover { color: var(--ochre-deep); }
 
-/* ── Eyebrow ─────────────────────────────────────────── */
+em { font-style: italic; }
+
+/* ---------- labels (former eyebrows) ---------- */
 
 .eyebrow {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  font-weight: 500;
   text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  letter-spacing: 0.16em;
+  color: var(--blue);
+  margin-bottom: 14px;
 }
-.eyebrow .dot {
-  width: 6px;
-  height: 6px;
-  background: var(--jade);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.eyebrow .dot { display: none; }
+.eyebrow::before { content: "\00A7 "; color: var(--ink-faint); }
 
-/* ── Masthead ────────────────────────────────────────── */
+/* ---------- masthead: notebook cover label ---------- */
 
 .masthead {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 48px;
-  gap: 32px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 36px;
+  align-items: start;
+  border: 1px solid var(--ink);
+  background: var(--card);
+  padding: 32px 34px;
+  box-shadow: 4px 4px 0 var(--rule-soft);
+  margin-bottom: 56px;
 }
-.masthead-left { flex: 1 1 480px; }
+
 .masthead h1 {
-  font-family: 'Instrument Serif', serif;
+  font-family: "Newsreader", serif;
   font-weight: 400;
-  font-size: clamp(34px, 5vw, 56px);
-  letter-spacing: -0.015em;
-  line-height: 1.04;
-  color: var(--jade-ink);
-  margin-top: 12px;
-  max-width: 18ch;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
 }
+
 .masthead h1 em {
-  font-style: italic;
-  color: var(--muted-strong);
+  font-style: normal; /* no italic flourish — one voice */
 }
+.masthead h1 .amp { color: var(--blue); }
 
 .meta-block {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.9;
-  text-align: right;
-  padding-top: 8px;
-  flex: 0 0 auto;
-}
-.meta-block strong {
-  color: var(--jade);
-  font-weight: 500;
-  display: inline-block;
-  width: 56px;
-  text-align: left;
-}
-.meta-block a {
-  color: var(--jade);
-  text-decoration-color: var(--line);
-}
-
-/* ── Intro ───────────────────────────────────────────── */
-
-.intro {
-  margin-bottom: 88px;
-  max-width: 720px;
-}
-.lede {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: clamp(20px, 2.2vw, 26px);
-  line-height: 1.45;
-  color: var(--jade-ink);
-  margin-bottom: 18px;
-}
-.lede-sub {
-  font-size: 15px;
-  color: var(--muted-strong);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
   line-height: 1.6;
+  border-left: 1px solid var(--rule);
+  padding-left: 18px;
+  color: var(--ink-soft);
 }
-
-/* ── Section ─────────────────────────────────────────── */
-
-.section {
-  margin-bottom: 96px;
-}
-.section-head {
-  margin-bottom: 36px;
-  border-top: 1px solid var(--line);
-  padding-top: 28px;
-}
-.section-head h2 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: clamp(24px, 3vw, 34px);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  color: var(--jade-ink);
-  margin-top: 14px;
-  max-width: 32ch;
-}
-.section-head h2 em {
-  font-style: italic;
-  color: var(--muted-strong);
-}
-.section-note {
-  font-size: 13.5px;
-  color: var(--muted);
-  margin-top: 14px;
-  max-width: 56ch;
-  line-height: 1.6;
-  font-style: italic;
-  font-family: 'Instrument Serif', serif;
-}
-
-/* ── Projects ────────────────────────────────────────── */
-
-.projects {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.project {
+.meta-block > div {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 28px;
-  padding: 36px 0;
-  border-top: 1px solid var(--line-soft);
-  align-items: start;
+  grid-template-columns: 58px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 9px;
 }
-.project:first-child {
-  border-top: none;
-  padding-top: 0;
-}
-.project-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  padding-top: 6px;
-}
-.project-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
+.meta-block > div > span { white-space: nowrap; }
+.meta-block strong {
+  color: var(--ink);
+  font-weight: 500;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 14px;
+  letter-spacing: 0.08em;
+  font-size: 10.5px;
 }
-.project h3 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: clamp(22px, 2.4vw, 30px);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  color: var(--jade-ink);
-  margin-bottom: 6px;
-}
-.project-desc {
-  font-size: 15.5px;
-  color: var(--muted-strong);
-  line-height: 1.65;
+.meta-block a { text-decoration: none; border-bottom: 1px dotted var(--ochre); overflow-wrap: anywhere; }
+.status-open { color: var(--ochre-deep); font-weight: 500; }
+
+/* ---------- intro ---------- */
+
+.intro { max-width: 720px; margin-bottom: 72px; }
+
+.lede {
+  font-family: "Newsreader", serif;
+  font-size: 22px;
+  line-height: 1.5;
   margin-bottom: 18px;
-  max-width: 64ch;
 }
-.project-meta {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
+
+.lede-sub {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  max-width: 640px;
   margin-bottom: 22px;
 }
-.project-meta li {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  background: var(--paper-warm);
-  border: 1px solid var(--line-soft);
-  padding: 4px 9px;
-  border-radius: 999px;
-}
-
-/* hero project: jasper accent on the number */
-.project.hero .project-num {
-  color: var(--jade-ink);
-  font-weight: 500;
-}
-.project.hero .project-num::after {
-  content: "";
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--jade-ink);
-  margin-top: 8px;
-}
-
-/* pending project: visibly de-emphasised */
-.project.pending {
-  opacity: 0.72;
-}
-.project.pending h3,
-.project.pending .project-num {
-  color: var(--muted-strong);
-}
-
-/* ── Buttons ─────────────────────────────────────────── */
-
-.project-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  white-space: nowrap;
-}
-.btn-primary {
-  background: var(--jade-ink);
-  color: var(--paper);
-  border-color: var(--jade-ink);
-}
-.btn-primary:hover {
-  background: var(--jade-deep);
-  text-decoration: none;
-}
-.btn-secondary {
-  background: transparent;
-  color: var(--jade);
-  border-color: var(--line);
-}
-.btn-secondary:hover {
-  border-color: var(--jade);
-  text-decoration: none;
-}
-.btn-disabled {
-  background: transparent;
-  color: var(--muted);
-  border-color: var(--line-soft);
-  cursor: not-allowed;
-  user-select: none;
-  opacity: 0.85;
-}
-
-/* ── Writing ─────────────────────────────────────────── */
-
-.writing {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0;
-  border-top: 1px solid var(--line-soft);
-}
-.article {
-  padding: 28px 0;
-  border-bottom: 1px solid var(--line-soft);
-  padding-right: 24px;
-}
-.article-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.article-num {
-  padding: 2px 7px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-}
-.article-flag {
-  color: var(--amber);
-  border-left: 1px solid var(--line);
-  padding-left: 10px;
-  letter-spacing: 0.08em;
-  text-transform: none;
-  font-size: 10.5px;
-}
-.article h3 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.25;
-  letter-spacing: -0.005em;
-  margin-bottom: 10px;
-  max-width: 28ch;
-}
-.article h3 a {
-  color: var(--jade-ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  transition: border-color 0.15s ease;
-}
-.article h3 a:hover {
-  border-bottom-color: var(--jade);
-}
-.article-teaser {
-  font-size: 14.5px;
-  color: var(--muted-strong);
-  line-height: 1.6;
-  max-width: 44ch;
-}
-.article-teaser em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  color: var(--jade-ink);
-}
-
-/* ── Credentials ─────────────────────────────────────── */
-
-.credentials .section-head { margin-bottom: 20px; }
-.cert-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.cert {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--paper-warm);
-}
-.cert-issuer {
-  display: none;
-}
-.cert-name {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: var(--jade-ink);
-}
-.cert-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  color: var(--muted);
-}
-
-/* ── Footer ──────────────────────────────────────────── */
-
-.site-footer {
-  margin-top: 48px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.footer-left { max-width: 540px; }
-.footer-line {
-  font-family: 'Instrument Serif', serif;
-  font-size: 22px;
-  line-height: 1.4;
-  color: var(--jade-ink);
-  margin-top: 12px;
-  margin-bottom: 14px;
-}
-.footer-line a { color: var(--jade-ink); }
-.footer-note {
-  font-size: 13.5px;
-  color: var(--muted-strong);
-  line-height: 1.55;
-}
-.footer-stamp {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* ── Tool stack ──────────────────────────────────────── */
 
 .tool-stack {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--blue);
+  border-top: 1px dotted var(--rule);
+  padding-top: 12px;
+}
+
+/* ---------- sections ---------- */
+
+.section { margin-bottom: 84px; }
+
+.section-head { margin-bottom: 34px; }
+
+.section-head h2 {
+  font-family: "Newsreader", serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3.6vw, 32px);
+  line-height: 1.2;
+}
+.section-head h2 em { font-style: normal; }
+
+.section-note, .section-subtitle {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  max-width: 560px;
+}
+
+/* ---------- credentials: lab-results table ---------- */
+
+.cert-list {
+  list-style: none;
+  border-top: 1px solid var(--ink);
+  max-width: 640px;
+}
+
+.cert {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 9px 2px;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 14px;
+}
+
+.cert-issuer {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+
+.cert-name { font-weight: 500; }
+
+.cert-date {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: var(--ochre-deep);
+}
+
+/* ---------- projects: specimens ---------- */
+
+.projects { list-style: none; }
+
+.project {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 28px;
+  padding: 30px 0 34px;
+  border-top: 1px solid var(--rule);
+}
+.projects .project:first-child { border-top: 1px solid var(--ink); }
+
+.project-num {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ochre);
+  line-height: 1;
+  padding-top: 4px;
+}
+.project-num::before {
+  content: "SPECIMEN";
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.project-body h3 {
+  font-family: "Newsreader", serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.project-tag {
+  font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+
+.project-desc {
+  font-size: 15.5px;
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
+.project-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+.btn {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-top: 22px;
-  line-height: 1.8;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--ink);
+  transition: all 0.15s ease;
 }
 
-/* ── Status open ─────────────────────────────────────── */
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--ochre-deep); border-color: var(--ochre-deep); color: var(--paper); }
 
-.status-open {
-  color: var(--jade-ink);
-  font-weight: 600;
-}
-
-/* ── Section subtitle ────────────────────────────────── */
-
-.section-subtitle {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted-strong);
-  margin-top: 8px;
-  max-width: 48ch;
-  line-height: 1.4;
-}
-
-/* ── Case study pending ──────────────────────────────── */
+.btn-secondary { background: transparent; color: var(--ink); }
+.btn-secondary:hover { border-color: var(--ochre-deep); color: var(--ochre-deep); }
 
 .case-study-pending {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px;
   text-transform: uppercase;
-  color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 0;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  border: 1px dashed var(--rule);
+  padding: 8px 12px;
 }
 
-/* ── Responsive ──────────────────────────────────────── */
+/* ---------- writing: published notes ---------- */
 
-@media (max-width: 720px) {
-  .masthead {
-    flex-direction: column;
-    gap: 18px;
-  }
-  .meta-block {
-    text-align: left;
-  }
-  .meta-block strong { width: auto; margin-right: 8px; }
+.writing { list-style: none; border-top: 1px solid var(--ink); max-width: 720px; }
 
-  .project {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .project-num {
-    font-size: 11px;
-    padding-top: 0;
-  }
-  .project.hero .project-num::after { display: none; }
+.article {
+  padding: 22px 0 26px;
+  border-bottom: 1px dotted var(--rule);
+}
 
-  .site-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.article-meta {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.article-date { color: var(--ink-faint); }
+.article-num { color: var(--ochre); font-weight: 500; }
+.article-num::before { content: "no. "; color: var(--ink-faint); }
+
+.article-flag {
+  color: var(--ochre-deep);
+  border: 1px solid var(--rule);
+  padding: 2px 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.article h3 {
+  font-family: "Newsreader", serif;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.article h3 a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+.article h3 a:hover { border-color: var(--ochre); }
+
+.article-teaser { font-size: 14px; color: var(--ink-soft); max-width: 640px; }
+
+/* ---------- footer: signature block ---------- */
+
+.site-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: end;
+  border-top: 3px double var(--ink);
+  padding-top: 28px;
+}
+
+.footer-line { font-size: 15px; margin-bottom: 6px; }
+.footer-note { font-size: 13px; color: var(--ink-soft); }
+
+.footer-stamp {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: right;
+}
+.footer-stamp::before {
+  content: "recorded by — ";
+  color: var(--ink-faint);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 700px) {
+  .wrap { padding: 28px 18px 56px; }
+  .masthead { grid-template-columns: 1fr; gap: 22px; padding: 24px 22px; }
+  .meta-block { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 16px; }
+  .project { grid-template-columns: 1fr; gap: 10px; padding: 24px 0 28px; }
+  .project-num { display: flex; gap: 10px; align-items: baseline; }
+  .project-num::before { margin-bottom: 0; }
+  .cert { grid-template-columns: 1fr auto; }
+  .cert-issuer { display: none; }
+  .site-footer { grid-template-columns: 1fr; }
+  .footer-stamp { text-align: left; }
 }
