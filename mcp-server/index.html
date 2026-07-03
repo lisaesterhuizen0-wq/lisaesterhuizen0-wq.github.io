@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Giving Claude real tools · EA MCP Server · Lisa Myburgh</title>
+<meta name="description" content="Case study: an open-source Model Context Protocol server in TypeScript that gives Claude live executive-assistant tools." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F9FBFC;
+    --ink: #1C2B3A;
+    --ink-soft: rgba(28, 43, 58, 0.64);
+    --ink-faint: rgba(28, 43, 58, 0.40);
+    --ochre: #0E7C66;
+    --ochre-deep: #095A4A;
+    --rule: rgba(28, 43, 58, 0.24);
+    --rule-soft: rgba(28, 43, 58, 0.10);
+    --grid: rgba(43, 76, 126, 0.07);
+    --card: #FFFFFF;
+    --blue: #0B6EFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--ink);
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 28px 96px; }
+  .masthead {
+    background: var(--card);
+    border: 1px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--rule-soft);
+    padding: 30px 32px 32px;
+    margin-bottom: 44px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+  .eyebrow::before { content: "\00a7 "; color: var(--ink-faint); }
+  h1 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: clamp(38px, 7vw, 58px);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  h1 em { font-style: normal; color: var(--ochre-deep); }
+  .standfirst {
+    font-family: "Newsreader", serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-family: "Newsreader", serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--ink);
+    margin: 56px 0 14px;
+  }
+  p { margin-bottom: 14px; max-width: 660px; }
+  em { font-style: italic; }
+  .modules {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    background: var(--card);
+    border: 1px solid var(--rule-soft);
+    border-left: 3px solid var(--ochre);
+    padding: 20px 24px;
+    margin: 18px 0 20px;
+    list-style: none;
+  }
+  .modules li::before { content: "\2192 "; color: var(--blue); }
+  .modules li:first-child::before { content: "\25b8 "; color: var(--ochre); }
+  .contract {
+    border-left: 3px solid var(--blue);
+    background: var(--card);
+    border-top: 1px solid var(--rule-soft);
+    border-right: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    padding: 16px 22px;
+    margin: 18px 0 20px;
+    font-size: 15px;
+    max-width: 660px;
+  }
+  .contract strong { color: var(--ochre-deep); }
+  .sample-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    margin: 22px 0 8px;
+  }
+  .srt {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    padding: 14px 16px;
+    border: 1px solid var(--rule-soft);
+    background: var(--card);
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+    margin: 20px 0;
+    max-width: 660px;
+  }
+  .stat { background: var(--card); padding: 20px 22px; }
+  .stat .num {
+    font-family: "Newsreader", serif;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--ochre-deep);
+  }
+  .stat .lbl {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  @media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }
+  footer { margin-top: 72px; border-top: 3px double var(--ink); padding-top: 22px; }
+  footer a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--ochre);
+    text-underline-offset: 3px;
+    margin-right: 20px;
+  }
+  footer a:hover { color: var(--ochre-deep); text-decoration-color: var(--ochre-deep); }
+  footer::before {
+    content: "recorded by \2014 Lisa Myburgh";
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <p class="eyebrow">Case study · TypeScript + MCP</p>
+
+    <h1>Giving Claude <em>real tools</em>.</h1>
+
+    <p class="standfirst">
+      An open-source Model Context Protocol server that hands Claude live executive-assistant functions. It answers timezone and scheduling questions by running code, not by guessing.
+    </p>
+  </div>
+
+  <h2>The problem</h2>
+  <p>
+    A language model is confident and often wrong about the small factual things an assistant lives on. Ask it what time it is in Berlin right now, or when a Cape Town and a New York calendar actually overlap, and it will produce a plausible answer with no way to know if it is correct. For scheduling across an executive's timezones, plausible is not good enough.
+  </p>
+  <p>
+    The Model Context Protocol is the fix. It is the standard way to hand a model real tools: functions it can call, with typed inputs and real answers. So instead of asking Claude to reason about time, I gave it the ability to compute it.
+  </p>
+
+  <h2>What I built</h2>
+  <p>A single-file MCP server in TypeScript that exposes two tools:</p>
+  <ul class="modules">
+    <li>time_in: the current local time in any IANA timezone</li>
+    <li>working_hours_overlap: the hours today when two or more timezones share a working day</li>
+    <li>zod input schemas: validate every input before any logic runs</li>
+    <li>graceful errors: a bad timezone returns a clean message, never a crash</li>
+    <li>stdio transport: Claude launches the server and talks to it directly</li>
+  </ul>
+  <p>
+    Claude reads each tool's description to decide when to call it. When I ask it to schedule a call between Berlin and New York, it reaches for <em>working_hours_overlap</em> on its own and answers from my code.
+  </p>
+
+  <h2>The engineering, not the prompt</h2>
+  <p>
+    The point of this build was to work below the layer I usually work at. Three decisions carry it:
+  </p>
+  <div class="contract">
+    Inputs are validated before logic runs. Failures return a clean message instead of crashing the server. And all logging goes to <strong>stderr</strong>, because stdout carries the protocol itself. Print to the wrong stream and you corrupt the channel.
+  </div>
+  <p>
+    None of that is visible when the tool works. It is the difference between a demo and something you would let an assistant rely on.
+  </p>
+
+  <h2>What it returns</h2>
+  <p class="sample-label">working_hours_overlap · Europe/Berlin + America/New_York</p>
+  <div class="srt">Overlapping working hours (9:00-17:00 local) for Europe/Berlin, America/New_York:
+13:00 UTC  (Berlin 15:00, New_York 09:00)
+14:00 UTC  (Berlin 16:00, New_York 10:00)</div>
+  <p>
+    When two zones can never align a normal workday, it says so plainly rather than inventing a slot.
+  </p>
+
+  <h2>Outcome</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="num">2 tools</div>
+      <div class="lbl">time_in and working_hours_overlap, both zod-validated</div>
+    </div>
+    <div class="stat">
+      <div class="num">Open source</div>
+      <div class="lbl">published public on GitHub, installable by anyone</div>
+    </div>
+    <div class="stat">
+      <div class="num">0 keys</div>
+      <div class="lbl">no external services, no API keys, no data files to keep current</div>
+    </div>
+    <div class="stat">
+      <div class="num">TypeScript</div>
+      <div class="lbl">typed inputs, graceful errors, single-file server</div>
+    </div>
+  </div>
+  <p>
+    This is me moving from wiring tools together to building them. The next tools an assistant reaches for, a free-slot finder and a calendar hold, follow the same shape.
+  </p>
+
+  <footer>
+    <a href="https://github.com/lisaesterhuizen0-wq/ea-mcp-server">View the repo →</a>
+    <a href="https://lisaesterhuizen0-wq.github.io/">← Back to portfolio</a>
+  </footer>
+
+</div>
+</body>
+</html>
