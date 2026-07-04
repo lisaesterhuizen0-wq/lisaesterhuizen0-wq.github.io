@@ -198,6 +198,7 @@
   <ul class="modules">
     <li>time_in: the current local time in any IANA timezone</li>
     <li>working_hours_overlap: the hours today when two or more timezones share a working day</li>
+    <li>draft_calendar_hold: turn a meeting into a ready-to-save .ics invite</li>
     <li>zod input schemas: validate every input before any logic runs</li>
     <li>graceful errors: a bad timezone returns a clean message, never a crash</li>
     <li>stdio transport: Claude launches the server and talks to it directly</li>
@@ -229,8 +230,8 @@
   <h2>Outcome</h2>
   <div class="stats">
     <div class="stat">
-      <div class="num">2 tools</div>
-      <div class="lbl">time_in and working_hours_overlap, both zod-validated</div>
+      <div class="num">3 tools</div>
+      <div class="lbl">time, overlap, and .ics calendar holds, all zod-validated</div>
     </div>
     <div class="stat">
       <div class="num">Open source</div>
@@ -246,7 +247,7 @@
     </div>
   </div>
   <p>
-    This is me moving from wiring tools together to building them. The next tools an assistant reaches for, a free-slot finder and a calendar hold, follow the same shape.
+    This is me moving from wiring tools together to building them. The next tools an assistant reaches for, a free-slot finder and a meeting brief, follow the same shape.
   </p>
 
   <footer>
