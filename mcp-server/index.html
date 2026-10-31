@@ -7,7 +7,7 @@
 <meta name="description" content="Case study: an open-source Model Context Protocol server in TypeScript that gives Claude live executive-assistant tools." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root {
     --paper: #F9FBFC;
@@ -30,7 +30,7 @@
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: 32px 32px;
     color: var(--ink);
-    font-family: "Public Sans", sans-serif;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.65;
@@ -45,7 +45,7 @@
     margin-bottom: 44px;
   }
   .eyebrow {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -54,7 +54,7 @@
   }
   .eyebrow::before { content: "\00a7 "; color: var(--ink-faint); }
   h1 {
-    font-family: "Newsreader", serif;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-weight: 500;
     font-size: clamp(38px, 7vw, 58px);
     line-height: 1.05;
@@ -63,7 +63,7 @@
   }
   h1 em { font-style: normal; color: var(--ochre-deep); }
   .standfirst {
-    font-family: "Newsreader", serif;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 21px;
     font-weight: 400;
     line-height: 1.5;
@@ -72,7 +72,7 @@
     margin-bottom: 0;
   }
   h2 {
-    font-family: "Newsreader", serif;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-weight: 500;
     font-size: 30px;
     color: var(--ink);
@@ -81,7 +81,7 @@
   p { margin-bottom: 14px; max-width: 660px; }
   em { font-style: italic; }
   .modules {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 13px;
     line-height: 1.9;
     background: var(--card);
@@ -106,7 +106,7 @@
   }
   .contract strong { color: var(--ochre-deep); }
   .sample-label {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -114,7 +114,7 @@
     margin: 22px 0 8px;
   }
   .srt {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 12.5px;
     line-height: 1.65;
     white-space: pre-wrap;
@@ -135,13 +135,13 @@
   }
   .stat { background: var(--card); padding: 20px 22px; }
   .stat .num {
-    font-family: "Newsreader", serif;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 30px;
     line-height: 1;
     color: var(--ochre-deep);
   }
   .stat .lbl {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -152,7 +152,7 @@
   @media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }
   footer { margin-top: 72px; border-top: 3px double var(--ink); padding-top: 22px; }
   footer a {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 13px;
     color: var(--ink);
     text-decoration: underline;
@@ -164,7 +164,7 @@
   footer::before {
     content: "recorded by \2014 Lisa Myburgh";
     display: block;
-    font-family: "IBM Plex Mono", monospace;
+    font-family: Calibri, Carlito, Arial, sans-serif;
     font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--ink-faint);
