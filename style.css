@@ -516,3 +516,106 @@ html { scroll-padding-top: 76px; }
   color: var(--cream);
   max-width: 520px;
 }
+
+/* ============================================================
+   v6 (22 Nov 2026): seven featured builds with a visual each,
+   the rest behind "more", compact background section.
+   ============================================================ */
+
+.features { list-style: none; display: grid; gap: 20px; }
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 34px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 30px 32px;
+}
+.feature:nth-child(even) .feature-text { order: 2; }
+
+.feature-text .project-num { margin-bottom: 14px; }
+.feature-text h3 { font-size: 25px; font-weight: 700; line-height: 1.2; color: var(--forest); margin-bottom: 4px; }
+.feature-text .project-desc { font-size: 16.5px; max-width: none; margin-bottom: 18px; }
+.feature-text > .project-desc:last-child { margin-bottom: 0; }
+
+.feature-visual { margin: 0; min-width: 0; }
+.feature-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(12, 32, 22, 0.10);
+  background: #FFFFFF;
+}
+.feature-tall .feature-visual img { max-height: 420px; width: auto; max-width: 100%; margin: 0 auto; }
+.feature-visual figcaption { font-size: 14px; color: var(--ink-faint); margin-top: 10px; text-align: center; }
+
+/* flow diagrams */
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: var(--sage-tint);
+  border-radius: 12px;
+  padding: 22px 18px;
+}
+.flow-step {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--forest);
+  text-align: center;
+  max-width: 100%;
+}
+.flow-arrow { color: var(--moss); font-size: 17px; line-height: 1; }
+.flow-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+.flow-split .flow-step { font-weight: 400; font-size: 14.5px; }
+.flow-split .flow-alt { border-style: dashed; border-color: var(--moss); }
+
+/* more builds */
+.more { margin-top: 22px; }
+.more summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--forest);
+  border: 1.5px solid var(--forest);
+  border-radius: 999px;
+  padding: 9px 22px;
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after { content: "  +"; }
+.more[open] summary::after { content: "  \2212"; }
+.more summary:hover { background: var(--sage-tint); }
+.more .projects { margin-top: 20px; }
+.more .project:not(.hero):not(.noclamp):not(.open) .project-desc { display: block; overflow: visible; }
+
+/* background */
+.background { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; }
+.background > div { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 22px 22px; }
+.background h3 { font-size: 18px; font-weight: 700; color: var(--forest); margin-bottom: 6px; }
+.background p { font-size: 16px; color: var(--ink-soft); }
+.section-head:last-child, #background .section-head { margin-bottom: 14px; }
+
+/* quote (used once a real quote is in) */
+.quote { margin: 0 0 52px; padding: 26px 30px; background: var(--card); border: 1px solid var(--rule); border-left: 5px solid var(--moss); border-radius: 12px; }
+.quote blockquote { font-size: 21px; line-height: 1.45; color: var(--forest); }
+.quote figcaption { font-size: 15px; font-weight: 700; color: var(--ink-faint); margin-top: 10px; }
+
+@media (max-width: 860px) {
+  .feature { grid-template-columns: 1fr; gap: 22px; padding: 22px 20px; }
+  .feature:nth-child(even) .feature-text { order: 0; }
+  .background { grid-template-columns: 1fr; }
+}
