@@ -19,7 +19,6 @@
   --cream: #F6F3E7;
   --rule: rgba(28, 42, 33, 0.16);
   --rule-soft: rgba(28, 42, 33, 0.08);
-  --trees: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='90' viewBox='0 0 220 90'%3E%3Cpath fill='%23ffffff' fill-opacity='.055' d='M-10 90 L18 30 L46 90Z M30 90 L62 6 L94 90Z M80 90 L104 40 L128 90Z M112 90 L146 16 L180 90Z M166 90 L194 34 L222 90Z M204 90 L238 6 L272 90Z'/%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,12 +66,10 @@ em { font-style: italic; }
   gap: 40px;
   align-items: start;
   background-color: var(--forest);
-  background-image: var(--trees), linear-gradient(165deg, #12301F 0%, var(--forest) 45%, var(--forest-2) 100%);
-  background-repeat: repeat-x, no-repeat;
-  background-position: bottom left, center;
+  background-image: linear-gradient(165deg, #12301F 0%, var(--forest) 45%, var(--forest-2) 100%);
   color: var(--cream);
   border-radius: 16px;
-  padding: 44px 40px 72px;
+  padding: 44px 40px 48px;
   margin-bottom: 52px;
 }
 
@@ -331,12 +328,10 @@ em { font-style: italic; }
   gap: 32px;
   align-items: end;
   background-color: var(--forest);
-  background-image: var(--trees), linear-gradient(165deg, #12301F 0%, var(--forest) 45%, var(--forest-2) 100%);
-  background-repeat: repeat-x, no-repeat;
-  background-position: bottom left, center;
+  background-image: linear-gradient(165deg, #12301F 0%, var(--forest) 45%, var(--forest-2) 100%);
   color: var(--cream);
   border-radius: 16px;
-  padding: 34px 40px 60px;
+  padding: 34px 40px 36px;
 }
 
 .site-footer .eyebrow { color: var(--sage); }
@@ -356,13 +351,13 @@ em { font-style: italic; }
 
 @media (max-width: 700px) {
   .wrap { padding: 18px 16px 40px; }
-  .masthead { grid-template-columns: 1fr; gap: 24px; padding: 30px 24px 64px; }
+  .masthead { grid-template-columns: 1fr; gap: 24px; padding: 30px 24px 32px; }
   .meta-block { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.22); padding-left: 0; padding-top: 18px; }
   .project { grid-template-columns: 1fr; gap: 12px; padding: 22px 20px 24px; }
   .project-num { width: 38px; height: 38px; font-size: 15px; }
   .cert-list { padding: 4px 16px; }
   .cert { grid-template-columns: 1fr auto; }
   .cert-issuer { display: none; }
-  .site-footer { grid-template-columns: 1fr; padding: 28px 24px 56px; }
+  .site-footer { grid-template-columns: 1fr; padding: 28px 24px 30px; }
   .footer-stamp { text-align: left; }
 }
