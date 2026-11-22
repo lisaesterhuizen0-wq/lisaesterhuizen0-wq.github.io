@@ -11,10 +11,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css?v=6" />
+<link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
-<div class="wrap">
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="nav-name" href="#top">Lisa Myburgh</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#credentials">Certifications</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cv" href="Lisa_Myburgh_CV.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap" id="top">
 
   <header class="masthead">
     <div class="masthead-left">
@@ -30,13 +42,271 @@
   </header>
 
   <section class="intro">
+    <div class="intro-text">
     <p class="lede">
       I work as the AI and operations layer underneath an executive, placed by RAY AI. I'm currently embedded with the CEO of a German packaging manufacturer, after six months with the CEO of Senken, a Berlin carbon-markets SaaS. I build automations that ship, skills that get used, and internal tools that quietly remove friction from someone else's day.
     </p>
     <p class="lede-sub">
       AI implementation &amp; enablement: self-taught front-end, fluent in Claude across API, Code, and skills. I build for handover, so teams can run what I ship. Winner of RAY AI's internal AI hackathon.
     </p>
+    </div>
+    <aside class="toolkit">
+      <p class="eyebrow">Toolkit</p>
     <p class="tool-stack"><span>n8n</span><span>Make.com</span><span>Power Automate</span><span>AssemblyAI</span><span>Clay</span><span>HubSpot</span><span>Notion</span><span>Claude API</span><span>ChatGPT</span><span>Gemini</span><span>Perplexity</span><span>Cloudflare Workers</span><span>GitHub Pages</span><span>Descript</span><span>Canva</span><span>Slack</span></p>
+    </aside>
+  </section>
+
+  <section class="section" id="work">
+    <header class="section-head">
+      <p class="eyebrow"><span class="dot"></span>Selected work · 2026</p>
+      <h2>Sixteen builds across <em>automation, internal tools, and engineering</em>.</h2>
+      <p class="section-note">Four carry full case studies. The rest are live demos or tools running in production, with write-ups following one at a time.</p>
+    </header>
+
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="filter active" data-filter="all">All 16</button>
+      <button class="filter" data-filter="auto">Automation</button>
+      <button class="filter" data-filter="tools">Tools and skills</button>
+      <button class="filter" data-filter="eng">Engineering</button>
+    </div>
+
+    <ol class="projects">
+
+      <!-- 01 AI ENQUIRY HANDLER: video -->
+      <li class="project hero" data-cat="auto">
+        <div class="project-num">01</div>
+        <div class="project-body">
+          <h3>AI Enquiry Handler</h3>
+          <p class="project-tag">Automation · n8n + Claude + HubSpot · Property and motor</p>
+          <p class="project-desc">
+            Answers lettings and car dealership enquiries in 6 to 15 seconds, day or night, with a booking link. Complaints and anything uncertain go to a VA with a summary, and the customer gets a holding reply. Every lead is logged in Google Sheets and HubSpot, bookings from Cal.com are matched back to the lead, and the manager gets an alert if a step fails. Tested on enquiries it had never seen: every one that needed a person went to a person, for under a penny of AI per enquiry. Shown with demonstration data.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://www.loom.com/share/7a8b907b3aef4948b78c207695dac8fc" target="_blank" rel="noopener">Watch the demo →</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 02 TRAVEL WALLET: private client build, no links -->
+      <li class="project" data-cat="eng">
+        <div class="project-num">02</div>
+        <div class="project-body">
+          <h3>Travel Wallet</h3>
+          <p class="project-tag">Private client build · Cloudflare Workers + Claude + TypeScript</p>
+          <p class="project-desc">
+            A client who travels constantly forwards booking confirmations to one email address. Claude reads each one and files it into the right trip with its documents, replacing changed bookings instead of duplicating them, and flagging clashes such as two hotels on the same night. Anything uncertain alerts me, never the client. Offline phone app, covered by 671 automated tests. Private, because it holds a real client's documents.
+          </p>
+        </div>
+      </li>
+
+      <!-- 03 HARCOURTS -->
+      <li class="project" data-cat="auto">
+        <div class="project-num">03</div>
+        <div class="project-body">
+          <h3>Harcourts Newsletter Automation</h3>
+          <p class="project-tag">Automation · Monthly cadence</p>
+          <p class="project-desc">
+            A monthly real-estate newsletter that drafts itself and emails the principal for one click of approval.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/harcourts-newsletter/case-study/" target="_blank" rel="noopener">Case study →</a>
+            <a class="btn btn-secondary" href="https://lisaesterhuizen0-wq.github.io/harcourts-newsletter/" target="_blank" rel="noopener">Live issue</a>
+            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/harcourts-newsletter" target="_blank" rel="noopener">View repo</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 02 COMPETITIVE ORG MAP: live -->
+      <li class="project" data-cat="tools">
+        <div class="project-num">04</div>
+        <div class="project-body">
+          <h3>Competitive Org Mapping</h3>
+          <p class="project-tag">Methodology · HTML demo</p>
+          <p class="project-desc">
+            Built to support a real senior hire. A single-file org map of the target company, researched with Claude across meeting transcripts, Slack, and LinkedIn, then published as a methodology.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/competitive-org-map/" target="_blank" rel="noopener">Live demo</a>
+            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/competitive-org-map" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 03 EA TOOLKIT: live -->
+      <li class="project" data-cat="tools">
+        <div class="project-num">05</div>
+        <div class="project-body">
+          <h3>EA Toolkit</h3>
+          <p class="project-tag">Live tool</p>
+          <p class="project-desc">
+            AI-assisted pre-meeting brief generator. Paste a calendar invite and a LinkedIn profile, get a five-section brief in seconds. I use it for my own meeting prep.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/ea-toolkit/" target="_blank" rel="noopener">Live demo</a>
+            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/ea-toolkit" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 04 TRAVEL: live demos -->
+      <li class="project" data-cat="tools">
+        <div class="project-num">06</div>
+        <div class="project-body">
+          <h3>Travel Coordination, Reframed</h3>
+          <p class="project-tag">RAY AI bootcamp · Two live tools</p>
+          <p class="project-desc">
+            Replaced an 11-page travel itinerary plus three email drafts with two single-page tools. The executive picks options on one, reads the trip on a phone on the other.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/travel-selection-form/" target="_blank" rel="noopener">Selection tool</a>
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/travel-itinerary-mobile/" target="_blank" rel="noopener">Mobile itinerary</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 05 CROSS-PORTAL: live -->
+      <li class="project" data-cat="tools">
+        <div class="project-num">07</div>
+        <div class="project-body">
+          <h3>Cross-Portal Auto-Fill Pattern</h3>
+          <p class="project-tag">Pattern · Bookmarklet</p>
+          <p class="project-desc">
+            Capture once, fill everywhere. The same bookmarklet pattern, applied to two unrelated workflows.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/cross-portal-autofill-demo/" target="_blank" rel="noopener">Live demo →</a>
+            <a class="btn btn-secondary" href="https://lisaesterhuizen0-wq.github.io/cross-portal-autofill-demo/case-study/" target="_blank" rel="noopener">Case study →</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 06 CWN SRT PIPELINE: live -->
+      <li class="project" data-cat="auto">
+        <div class="project-num">08</div>
+        <div class="project-body">
+          <h3>The Subtitle Pipeline</h3>
+          <p class="project-tag">Pipeline · Make.com + Claude</p>
+          <p class="project-desc">
+            One folder in, clean subtitles out. Glossary-driven Claude cleanup that never touches a timestamp. Won RAY AI's internal AI hackathon.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/cwn-srt-pipeline/" target="_blank" rel="noopener">Case study →</a>
+            <a class="btn btn-secondary" href="https://www.loom.com/share/4c2c78e37e024bca94110539545ccbd5" target="_blank" rel="noopener">Watch the video</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 07 HEART-FIRST MEAL PLANNER: live -->
+      <li class="project" data-cat="tools">
+        <div class="project-num">09</div>
+        <div class="project-body">
+          <h3>The Heart-First Meal Planner</h3>
+          <p class="project-tag">Personal build · Dietetics × AI</p>
+          <p class="project-desc">
+            Where the BSc meets the build: a medication-aware Mediterranean meal planner for a cardiac household, with per-person portioning, meal swaps, and adherence tracking. Names anonymised, logic real.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/heart-meal-planner/" target="_blank" rel="noopener">Live demo →</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 08 EA MCP SERVER: live -->
+      <li class="project" data-cat="eng">
+        <div class="project-num">10</div>
+        <div class="project-body">
+          <h3>The EA MCP Server</h3>
+          <p class="project-tag">Engineering · TypeScript + MCP</p>
+          <p class="project-desc">
+            A Model Context Protocol server, published open source, that hands Claude live executive-assistant tools. It answers timezone and scheduling questions by running code, not by guessing. Typed inputs, graceful errors.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/mcp-server/" target="_blank" rel="noopener">Case study →</a>
+            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/ea-mcp-server" target="_blank" rel="noopener">View repo</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 09 SHEET CHANGE ALERT: in production -->
+      <li class="project" data-cat="auto">
+        <div class="project-num">11</div>
+        <div class="project-body">
+          <h3>Sheet Change Alert</h3>
+          <p class="project-tag">Automation · Google Apps Script · Packaging manufacturer</p>
+          <p class="project-desc">
+            A key customer kept changing delivery dates in a shared sheet without telling anyone. A read-only script now checks it every 30 minutes and emails eight people the exact cells that changed, old value next to new. In its first week it caught POs the customer had deleted by accident. Running since September 2026 with a 0% error rate, handed over with a runbook.
+          </p>
+        </div>
+      </li>
+
+      <!-- 10 ARTWORK HUB: public demo, fictional data -->
+      <li class="project noclamp" data-cat="tools eng">
+        <div class="project-num">12</div>
+        <div class="project-body">
+          <h3>Artwork Hub</h3>
+          <p class="project-tag">Internal tool · Next.js + Claude · Packaging manufacturer</p>
+          <p class="project-desc">
+            Print-artwork approvals lived in email threads, and the vendor tool on offer was a five-figure annual licence. In two days I built a working demo: one record per artwork with version history, browser links so printers upload proofs and customers approve without email, and an AI check that flags print problems in the PDF. This public copy runs on fictional data. Passcode: <code>druckfreigabe</code>. The first visit can take 30 seconds to wake up.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://artwork-hub-demo.onrender.com" target="_blank" rel="noopener">Live demo</a>
+            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/artwork-hub-demo" target="_blank" rel="noopener">View repo</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 13 ORDER LIST: in production -->
+      <li class="project" data-cat="auto">
+        <div class="project-num">13</div>
+        <div class="project-body">
+          <h3>Order List Automation</h3>
+          <p class="project-tag">Automation · Power Automate + Office Scripts · Packaging manufacturer</p>
+          <p class="project-desc">
+            The CEO updated a 3,900-row order list by hand every morning. A Power Automate flow and an Office Script now update it from the ERP's closure emails, log every change, and hold anything unclear for a person. First live batch: 11 written, 4 correctly held, 0 failed.
+          </p>
+        </div>
+      </li>
+
+      <!-- 14 PARTNER UPDATE: in production -->
+      <li class="project" data-cat="auto">
+        <div class="project-num">14</div>
+        <div class="project-body">
+          <h3>Weekly Partner Update</h3>
+          <p class="project-tag">Automation · Weekly cadence · Packaging manufacturer</p>
+          <p class="project-desc">
+            A filling partner now gets a Friday email of their open purchase orders and bulk status, so nobody has to chase for it. I collected their feedback on the first issues and am reworking the format before it rolls out to every partner.
+          </p>
+        </div>
+      </li>
+
+      <!-- 15 ERP GUIDE: Claude skill -->
+      <li class="project" data-cat="tools">
+        <div class="project-num">15</div>
+        <div class="project-body">
+          <h3>ERP Guide</h3>
+          <p class="project-tag">Claude skill · Packaging manufacturer</p>
+          <p class="project-desc">
+            The German ERP's documentation was scattered. I turned it into a Claude skill with 16 procedures, so Claude can find its way around the system and write onboarding guides for new staff.
+          </p>
+        </div>
+      </li>
+
+      <!-- 16 INVESTMENT FINDER: Harcourts -->
+      <li class="project" data-cat="auto">
+        <div class="project-num">16</div>
+        <div class="project-body">
+          <h3>Investment Finder</h3>
+          <p class="project-tag">Research agent · Real estate</p>
+          <p class="project-desc">
+            Every two weeks an agent scores new listings on rental yield, capital growth, and short-let potential, and sends investors a brief when a strong one appears.
+          </p>
+          <div class="project-actions">
+            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/harcourts-investor-brief" target="_blank" rel="noopener">View repo</a>
+          </div>
+        </div>
+      </li>
+
+    </ol>
   </section>
 
   <section class="section credentials" id="credentials">
@@ -87,252 +357,6 @@
     </ul>
   </section>
 
-  <section class="section" id="work">
-    <header class="section-head">
-      <p class="eyebrow"><span class="dot"></span>Selected work · 2026</p>
-      <h2>Sixteen builds across <em>automation, internal tools, and engineering</em>.</h2>
-      <p class="section-note">Four carry full case studies. The rest are live demos or tools running in production, with write-ups following one at a time.</p>
-    </header>
-
-    <ol class="projects">
-
-      <!-- 01 AI ENQUIRY HANDLER: video -->
-      <li class="project hero">
-        <div class="project-num">01</div>
-        <div class="project-body">
-          <h3>AI Enquiry Handler</h3>
-          <p class="project-tag">Automation · n8n + Claude + HubSpot · Property and motor</p>
-          <p class="project-desc">
-            Answers lettings and car dealership enquiries in 6 to 15 seconds, day or night, with a booking link. Complaints and anything uncertain go to a VA with a summary, and the customer gets a holding reply. Every lead is logged in Google Sheets and HubSpot, bookings from Cal.com are matched back to the lead, and the manager gets an alert if a step fails. Tested on enquiries it had never seen: every one that needed a person went to a person, for under a penny of AI per enquiry. Shown with demonstration data.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://www.loom.com/share/7a8b907b3aef4948b78c207695dac8fc" target="_blank" rel="noopener">Watch the demo →</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 02 TRAVEL WALLET: private client build, no links -->
-      <li class="project">
-        <div class="project-num">02</div>
-        <div class="project-body">
-          <h3>Travel Wallet</h3>
-          <p class="project-tag">Private client build · Cloudflare Workers + Claude + TypeScript</p>
-          <p class="project-desc">
-            A client who travels constantly forwards booking confirmations to one email address. Claude reads each one and files it into the right trip with its documents, replacing changed bookings instead of duplicating them, and flagging clashes such as two hotels on the same night. Anything uncertain alerts me, never the client. Offline phone app, covered by 671 automated tests. Private, because it holds a real client's documents.
-          </p>
-        </div>
-      </li>
-
-      <!-- 03 HARCOURTS -->
-      <li class="project">
-        <div class="project-num">03</div>
-        <div class="project-body">
-          <h3>Harcourts Newsletter Automation</h3>
-          <p class="project-tag">Automation · Monthly cadence</p>
-          <p class="project-desc">
-            A monthly real-estate newsletter that drafts itself and emails the principal for one click of approval.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/harcourts-newsletter/case-study/" target="_blank" rel="noopener">Case study →</a>
-            <a class="btn btn-secondary" href="https://lisaesterhuizen0-wq.github.io/harcourts-newsletter/" target="_blank" rel="noopener">Live issue</a>
-            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/harcourts-newsletter" target="_blank" rel="noopener">View repo</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 02 COMPETITIVE ORG MAP: live -->
-      <li class="project">
-        <div class="project-num">04</div>
-        <div class="project-body">
-          <h3>Competitive Org Mapping</h3>
-          <p class="project-tag">Methodology · HTML demo</p>
-          <p class="project-desc">
-            Built to support a real senior hire. A single-file org map of the target company, researched with Claude across meeting transcripts, Slack, and LinkedIn, then published as a methodology.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/competitive-org-map/" target="_blank" rel="noopener">Live demo</a>
-            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/competitive-org-map" target="_blank" rel="noopener">Repo</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 03 EA TOOLKIT: live -->
-      <li class="project">
-        <div class="project-num">05</div>
-        <div class="project-body">
-          <h3>EA Toolkit</h3>
-          <p class="project-tag">Live tool</p>
-          <p class="project-desc">
-            AI-assisted pre-meeting brief generator. Paste a calendar invite and a LinkedIn profile, get a five-section brief in seconds. I use it for my own meeting prep.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/ea-toolkit/" target="_blank" rel="noopener">Live demo</a>
-            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/ea-toolkit" target="_blank" rel="noopener">Repo</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 04 TRAVEL: live demos -->
-      <li class="project">
-        <div class="project-num">06</div>
-        <div class="project-body">
-          <h3>Travel Coordination, Reframed</h3>
-          <p class="project-tag">RAY AI bootcamp · Two live tools</p>
-          <p class="project-desc">
-            Replaced an 11-page travel itinerary plus three email drafts with two single-page tools. The executive picks options on one, reads the trip on a phone on the other.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/travel-selection-form/" target="_blank" rel="noopener">Selection tool</a>
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/travel-itinerary-mobile/" target="_blank" rel="noopener">Mobile itinerary</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 05 CROSS-PORTAL: live -->
-      <li class="project">
-        <div class="project-num">07</div>
-        <div class="project-body">
-          <h3>Cross-Portal Auto-Fill Pattern</h3>
-          <p class="project-tag">Pattern · Bookmarklet</p>
-          <p class="project-desc">
-            Capture once, fill everywhere. The same bookmarklet pattern, applied to two unrelated workflows.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/cross-portal-autofill-demo/" target="_blank" rel="noopener">Live demo →</a>
-            <a class="btn btn-secondary" href="https://lisaesterhuizen0-wq.github.io/cross-portal-autofill-demo/case-study/" target="_blank" rel="noopener">Case study →</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 06 CWN SRT PIPELINE: live -->
-      <li class="project">
-        <div class="project-num">08</div>
-        <div class="project-body">
-          <h3>The Subtitle Pipeline</h3>
-          <p class="project-tag">Pipeline · Make.com + Claude</p>
-          <p class="project-desc">
-            One folder in, clean subtitles out. Glossary-driven Claude cleanup that never touches a timestamp. Won RAY AI's internal AI hackathon.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/cwn-srt-pipeline/" target="_blank" rel="noopener">Case study →</a>
-            <a class="btn btn-secondary" href="https://www.loom.com/share/4c2c78e37e024bca94110539545ccbd5" target="_blank" rel="noopener">Watch the video</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 07 HEART-FIRST MEAL PLANNER: live -->
-      <li class="project">
-        <div class="project-num">09</div>
-        <div class="project-body">
-          <h3>The Heart-First Meal Planner</h3>
-          <p class="project-tag">Personal build · Dietetics × AI</p>
-          <p class="project-desc">
-            Where the BSc meets the build: a medication-aware Mediterranean meal planner for a cardiac household, with per-person portioning, meal swaps, and adherence tracking. Names anonymised, logic real.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/heart-meal-planner/" target="_blank" rel="noopener">Live demo →</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 08 EA MCP SERVER: live -->
-      <li class="project">
-        <div class="project-num">10</div>
-        <div class="project-body">
-          <h3>The EA MCP Server</h3>
-          <p class="project-tag">Engineering · TypeScript + MCP</p>
-          <p class="project-desc">
-            A Model Context Protocol server, published open source, that hands Claude live executive-assistant tools. It answers timezone and scheduling questions by running code, not by guessing. Typed inputs, graceful errors.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://lisaesterhuizen0-wq.github.io/mcp-server/" target="_blank" rel="noopener">Case study →</a>
-            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/ea-mcp-server" target="_blank" rel="noopener">View repo</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 09 SHEET CHANGE ALERT: in production -->
-      <li class="project">
-        <div class="project-num">11</div>
-        <div class="project-body">
-          <h3>Sheet Change Alert</h3>
-          <p class="project-tag">Automation · Google Apps Script · Packaging manufacturer</p>
-          <p class="project-desc">
-            A key customer kept changing delivery dates in a shared sheet without telling anyone. A read-only script now checks it every 30 minutes and emails eight people the exact cells that changed, old value next to new. In its first week it caught POs the customer had deleted by accident. Running since September 2026 with a 0% error rate, handed over with a runbook.
-          </p>
-        </div>
-      </li>
-
-      <!-- 10 ARTWORK HUB: public demo, fictional data -->
-      <li class="project">
-        <div class="project-num">12</div>
-        <div class="project-body">
-          <h3>Artwork Hub</h3>
-          <p class="project-tag">Internal tool · Next.js + Claude · Packaging manufacturer</p>
-          <p class="project-desc">
-            Print-artwork approvals lived in email threads, and the vendor tool on offer was a five-figure annual licence. In two days I built a working demo: one record per artwork with version history, browser links so printers upload proofs and customers approve without email, and an AI check that flags print problems in the PDF. This public copy runs on fictional data. Passcode: <code>druckfreigabe</code>. The first visit can take 30 seconds to wake up.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-primary" href="https://artwork-hub-demo.onrender.com" target="_blank" rel="noopener">Live demo</a>
-            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/artwork-hub-demo" target="_blank" rel="noopener">View repo</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- 13 ORDER LIST: in production -->
-      <li class="project">
-        <div class="project-num">13</div>
-        <div class="project-body">
-          <h3>Order List Automation</h3>
-          <p class="project-tag">Automation · Power Automate + Office Scripts · Packaging manufacturer</p>
-          <p class="project-desc">
-            The CEO updated a 3,900-row order list by hand every morning. A Power Automate flow and an Office Script now update it from the ERP's closure emails, log every change, and hold anything unclear for a person. First live batch: 11 written, 4 correctly held, 0 failed.
-          </p>
-        </div>
-      </li>
-
-      <!-- 14 PARTNER UPDATE: in production -->
-      <li class="project">
-        <div class="project-num">14</div>
-        <div class="project-body">
-          <h3>Weekly Partner Update</h3>
-          <p class="project-tag">Automation · Weekly cadence · Packaging manufacturer</p>
-          <p class="project-desc">
-            A filling partner now gets a Friday email of their open purchase orders and bulk status, so nobody has to chase for it. I collected their feedback on the first issues and am reworking the format before it rolls out to every partner.
-          </p>
-        </div>
-      </li>
-
-      <!-- 15 ERP GUIDE: Claude skill -->
-      <li class="project">
-        <div class="project-num">15</div>
-        <div class="project-body">
-          <h3>ERP Guide</h3>
-          <p class="project-tag">Claude skill · Packaging manufacturer</p>
-          <p class="project-desc">
-            The German ERP's documentation was scattered. I turned it into a Claude skill with 16 procedures, so Claude can find its way around the system and write onboarding guides for new staff.
-          </p>
-        </div>
-      </li>
-
-      <!-- 16 INVESTMENT FINDER: Harcourts -->
-      <li class="project">
-        <div class="project-num">16</div>
-        <div class="project-body">
-          <h3>Investment Finder</h3>
-          <p class="project-tag">Research agent · Real estate</p>
-          <p class="project-desc">
-            Every two weeks an agent scores new listings on rental yield, capital growth, and short-let potential, and sends investors a brief when a strong one appears.
-          </p>
-          <div class="project-actions">
-            <a class="btn btn-secondary" href="https://github.com/lisaesterhuizen0-wq/harcourts-investor-brief" target="_blank" rel="noopener">View repo</a>
-          </div>
-        </div>
-      </li>
-
-    </ol>
-  </section>
-
   <section class="section" id="writing">
     <header class="section-head">
       <p class="eyebrow"><span class="dot"></span>Published notes</p>
@@ -371,7 +395,7 @@
     </ol>
   </section>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="footer-left">
       <p class="eyebrow"><span class="dot"></span>Get in touch</p>
       <p class="footer-line"><a href="mailto:lisaesterhuizen0@gmail.com">lisaesterhuizen0@gmail.com</a> · <a href="https://linkedin.com/in/lisa-myburgh" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/lisaesterhuizen0-wq" target="_blank" rel="noopener">GitHub</a> · <a href="Lisa_Myburgh_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></p>
@@ -383,5 +407,34 @@
   </footer>
 
 </div>
+<script>
+(function () {
+  var cards = document.querySelectorAll('.project');
+  var filters = document.querySelectorAll('.filter');
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      filters.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      cards.forEach(function (c) {
+        var show = f === 'all' || c.getAttribute('data-cat').split(' ').indexOf(f) !== -1;
+        c.hidden = !show;
+      });
+    });
+  });
+  cards.forEach(function (c) {
+    var d = c.querySelector('.project-desc');
+    if (!d || d.scrollHeight <= d.clientHeight + 2) return;
+    var b = document.createElement('button');
+    b.className = 'more-btn';
+    b.type = 'button';
+    b.textContent = 'Read more';
+    b.addEventListener('click', function () {
+      var open = c.classList.toggle('open');
+      b.textContent = open ? 'Show less' : 'Read more';
+    });
+    d.insertAdjacentElement('afterend', b);
+  });
+})();
+</script>
 </body>
 </html>
