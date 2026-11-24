@@ -619,3 +619,8 @@ html { scroll-padding-top: 76px; }
   .feature:nth-child(even) .feature-text { order: 0; }
   .background { grid-template-columns: 1fr; }
 }
+
+.meta-block > div { grid-template-columns: 76px 1fr; }
+
+@media (min-width: 701px) { .masthead { grid-template-columns: 1fr 372px; } }
+.meta-block a { overflow-wrap: normal; }

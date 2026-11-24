@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lisa Myburgh, AI Implementation Specialist</title>
-<meta name="description" content="AI Implementation Specialist. Automations that ship, internal tools that quietly remove friction. Portfolio of work for RAY AI placements, a real-estate agency, and a few side-projects." />
-<meta property="og:title" content="Lisa Myburgh, AI Implementation Specialist" />
+<title>Lisa Myburgh, AI Implementation and Automation Specialist</title>
+<meta name="description" content="AI Implementation and Automation Specialist. Automations that ship, internal tools that quietly remove friction. Portfolio of work for RAY AI placements, a real-estate agency, and a few side-projects." />
+<meta property="og:title" content="Lisa Myburgh, AI Implementation and Automation Specialist" />
 <meta property="og:description" content="Automations that ship, internal tools that quietly remove friction. Selected work and writing." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css?v=9" />
+<link rel="stylesheet" href="style.css?v=10" />
 </head>
 <body>
 <nav class="site-nav">
@@ -34,8 +34,8 @@
       <h1>Targeted AI solutions that take the heavy work <em>off a team</em>.</h1>
     </div>
     <aside class="meta-block">
-      <div><strong>Role</strong> <span>AI Implementation Specialist</span></div>
-      <div><strong>Based</strong> Somerset West, ZA · SAST</div>
+      <div><strong>Role</strong> <span>AI Implementation and Automation Specialist</span></div>
+      <div><strong>Located</strong> Currently in Somerset West, ZA</div>
       <div><strong>Status</strong> <span class="status-open">Open to remote roles</span></div>
       <div><strong>Contact</strong> <a href="mailto:lisaesterhuizen0@gmail.com">lisaesterhuizen0@gmail.com</a></div>
     </aside>
@@ -54,7 +54,7 @@
       I build automations and internal tools that take repetitive work off a team. Through RAY AI I'm placed with one client CEO at a time: currently a German packaging manufacturer, and before that Senken, a Berlin carbon-markets SaaS. I walk into someone else's business, learn how it runs, and build something the team keeps using after I leave.
     </p>
     <p class="lede-sub">
-      I work in n8n, Make.com, Power Automate and code, with Claude across the API, Claude Code and skills. I build for handover, so teams can run what I ship. Winner of RAY AI's internal AI hackathon.
+      I build with Claude Code and low-code tools: n8n, Make.com and Power Automate. My part is knowing what to build, specifying it for the business in front of me, testing it, and keeping company data protected with GDPR in mind. I build for handover, so teams can run what I ship. Winner of RAY AI's internal AI hackathon.
     </p>
     </div>
     <aside class="toolkit">
@@ -74,6 +74,32 @@
       <li class="feature">
         <div class="feature-text">
           <div class="project-num">01</div>
+          <h3>Order List Automation</h3>
+          <p class="project-tag">Automation · Power Automate + Office Scripts · Packaging manufacturer</p>
+          <p class="project-desc">
+            The CEO updated a 3,900-row order list by hand every morning. A Power Automate flow and an Office Script now update it from the ERP's closure emails, log every change, and hold anything unclear for a person. First live batch: 11 written, 4 correctly held, 0 failed.
+          </p>
+          
+        </div>
+        <figure class="feature-visual">
+            <div class="flow">
+              <span class="flow-step">ERP sends its closure emails</span>
+              <span class="flow-arrow" aria-hidden="true">&darr;</span>
+              <span class="flow-step">Power Automate picks them up</span>
+              <span class="flow-arrow" aria-hidden="true">&darr;</span>
+              <span class="flow-step">Office Script finds each order in the 3,900-row list</span>
+              <span class="flow-arrow" aria-hidden="true">&darr;</span>
+              <div class="flow-split"><span class="flow-step">Clear match: row updated</span><span class="flow-step flow-alt">Unclear: held for a person</span></div>
+              <span class="flow-arrow" aria-hidden="true">&darr;</span>
+              <span class="flow-step">Every change logged</span>
+            </div>
+          <figcaption>How the list updates itself. Client system, so no screenshot.</figcaption>
+        </figure>
+      </li>
+
+      <li class="feature">
+        <div class="feature-text">
+          <div class="project-num">02</div>
           <h3>AI Enquiry Handler</h3>
           <p class="project-tag">Automation · n8n + Claude + HubSpot · Property and motor</p>
           <p class="project-desc">
@@ -96,32 +122,6 @@
               <span class="flow-step">Cal.com booking matched back to the lead</span>
             </div>
           <figcaption>How an enquiry moves through it.</figcaption>
-        </figure>
-      </li>
-
-      <li class="feature">
-        <div class="feature-text">
-          <div class="project-num">02</div>
-          <h3>Order List Automation</h3>
-          <p class="project-tag">Automation · Power Automate + Office Scripts · Packaging manufacturer</p>
-          <p class="project-desc">
-            The CEO updated a 3,900-row order list by hand every morning. A Power Automate flow and an Office Script now update it from the ERP's closure emails, log every change, and hold anything unclear for a person. First live batch: 11 written, 4 correctly held, 0 failed.
-          </p>
-          
-        </div>
-        <figure class="feature-visual">
-            <div class="flow">
-              <span class="flow-step">ERP sends its closure emails</span>
-              <span class="flow-arrow" aria-hidden="true">&darr;</span>
-              <span class="flow-step">Power Automate picks them up</span>
-              <span class="flow-arrow" aria-hidden="true">&darr;</span>
-              <span class="flow-step">Office Script finds each order in the 3,900-row list</span>
-              <span class="flow-arrow" aria-hidden="true">&darr;</span>
-              <div class="flow-split"><span class="flow-step">Clear match: row updated</span><span class="flow-step flow-alt">Unclear: held for a person</span></div>
-              <span class="flow-arrow" aria-hidden="true">&darr;</span>
-              <span class="flow-step">Every change logged</span>
-            </div>
-          <figcaption>How the list updates itself. Client system, so no screenshot.</figcaption>
         </figure>
       </li>
 
